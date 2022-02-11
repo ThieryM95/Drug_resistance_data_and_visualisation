@@ -1,6 +1,6 @@
 # Drug_resistance_data_and_visualisation
 
-This repository is the first release of the data and code to visualise the data for:
+This is the first release of the data and code to visualise the data for:
 
 The influence of biological, epidemiological, and treatment factors on the establishment and spread of drug-resistant Plasmodium falciparum Thiery Masserey1,2, Tamsin Lee1,2, Monica Golumbeanu1,2, Andrew J Shattock1,2, Sherrie L Kelly1,2, Ian M Hastings3, Melissa A Penny1,2* 
 
