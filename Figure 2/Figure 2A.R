@@ -15,8 +15,7 @@ library("ggh4x")
 library("ggplot2")
 
 # load the data
-data <- read.csv(file = "/scicore/home/penny/masthi00/WF_spread/Visulaise_results/Paper/Data_first_order_indices_GSA.csv", header  = TRUE)
-
+data <- read.csv(file = "/scicore/home/penny/masthi00/WF_spread/Visulaise_results/Paper/Figure 2-Source data 1.csv", header  = TRUE)
 
 # Order the level of the factors (in the order of the highest sobol indices to lower one)
 data$Factor <- factor(data$Factor, levels = c(
@@ -68,19 +67,30 @@ PA <- ggplot(data_3, aes(x = drug, y = First, fill = Factor)) +
       "#882255", "#661100",
       "#888888"),
     name = "Factors:",
-    breaks = c("Access", "Resistance level of drug A", "Resistance level of drug B", "Fitness", "Half-life of drug A", "Half-life of drug B", "Cmax/IC50 of drug A", "Cmax/IC50 of drug B", "EIR", "Maximum killing rate of drug A", "Maximum killing rate of drug B", "Diangostic"),
-    labels = c("Access to treatment (%)", "Degree of resistance to drug A", "Degree of resistance to drug B", "Fitness cost", "Half-life of drug A (days)", "Half-life of drug B (days)", "Cmax/EC50 of drug A", "Cmax/EC50 of drug B", "EIR (inoculations per person per year)", "Emax of drug A (per day)", "Emax of drug B (per day)", "Diagnostic detection limit\n (parasites/microliter)")) +
-  scale_x_discrete(labels = c("Drug A" = "Drug A", "Drug B" = "Drug B", "Drug A + Drug B" = "Drug A\n + \nDrug B")) +
+    breaks = c("Access", "Resistance level of drug A", "Resistance level of drug B", "Fitness", "Half-life of drug A", "Half-life ofdrug B", "Cmax/IC50 of drug A", "Cmax/IC50 of drug B", "EIR", "Maximum killing rate of drug A", "Maximum killing rate of drug B", "Diangostic"),
+    labels = c("Access to treatment (%)", 
+               "Degree of resistance to\nthe short-acting drug", 
+               "Degree of resistance to\nthe long-acting drug", 
+               "Fitness cost", 
+               "Half-life of the\nshort-acting drug (days)", 
+               "Half-life of the\nlong-acting drug (days)", 
+               "Cmax/EC50 of the\nshort-acting drug", 
+               "Cmax/EC50 of the\nlong-acting drug", 
+               "EIR (inoculations per person per year)", 
+               "Emax of the\nshort-acting drug (per day)", 
+               "Emax of the\nlong-acting drug (per day)", 
+               "Diagnostic detection limit\n(parasites/microliter)")) +
+  scale_x_discrete(labels = c("Drug A" = "Short-acting\ndrug", "Drug B" = "Long-acting\ndrug", "Drug A + Drug B" = "Short-acting + \nLong-acting drugs")) +
   theme_bw() +
   theme(
-    axis.text.x = element_text(size = 15/constant, colour = "black", face = "bold"),
+    axis.text.x = element_text(size = 15/constant, colour = "black"),
     axis.text.y = element_text(size = 15/constant),
-    axis.title.x = element_text(size = 16/constant, face = "bold"),
-    axis.title.y = element_text(size = 16/constant, face = "bold"),
+    axis.title.x = element_text(size = 15/constant, face = "bold"),
+    axis.title.y = element_text(size = 15/constant, face = "bold"),
     plot.title = element_text(size = 20/constant, hjust = 0.5, face = "bold")) +
-  theme(legend.text = element_text(size = 16/constant)) +
-  theme(legend.title = element_text(size = 16/constant, face = "bold")) +
+  theme(legend.text = element_text(size = 15/constant)) +
+  theme(legend.title = element_text(size = 15/constant, face = "bold")) +
   ggtitle(label = "")+
   theme(legend.key.size = unit(0.3, "cm"))
 
-
+PA

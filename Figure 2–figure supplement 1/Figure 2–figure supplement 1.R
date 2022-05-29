@@ -15,19 +15,23 @@ library("ggh4x")
 library("ggplot2")
 
 # Load the data
-Quantil_final_final <- read.csv(file = "/scicore/home/penny/masthi00/WF_spread/Visulaise_results/Paper/Data_factors_effect_GSA_short_long.csv", sep = ",", header = T)
+Quantil_final_final <- read.csv(file = "/scicore/home/penny/masthi00/WF_spread/Visulaise_results/Paper/Figure 2-figure supplement 1-Source data 1.csv", sep = ",", header = T)
 
 # select non seasonal setting
 Quantil_final_2 <- Quantil_final_final[Quantil_final_final$Seasonality == "sesonality1",]
 
 # select factor of interest
 Quantil_final_2 <-  Quantil_final_2[Quantil_final_2$G == "Access" |
-                    Quantil_final_2$G == "Resistance level of drug B" |
-                    Quantil_final_2$G == "Resistance level of drug A",]
+                                      Quantil_final_2$G == "Resistance level of drug B" |
+                                      Quantil_final_2$G == "Resistance level of drug A",]
 
 # Define a label for lower value of each factor and one for highest value
 break_y <- c(1, 10, 20, 30, 39)
 Label_yy <- c("Min", "", "", "", "Max")
+
+# Define label for each drug type
+Dr.labs <- c("Short-acting drug", "Long-acting drug")
+names(Dr.labs) <- c("Drug A", "Drug B")
 
 constant<-2
 # Visualise the results
@@ -40,7 +44,7 @@ PLOT<-
     ymax = U,
     fill = G)
     , alpha = 0.15) +
-  facet_grid(. ~ drug) +
+  facet_grid(. ~ drug,  labeller = labeller(drug = Dr.labs)) +
   theme_bw() +
   ggtitle("") +
   scale_y_continuous(name = "Selection coefficient") +
@@ -68,8 +72,8 @@ PLOT<-
       "C_max_IC50"),
     labels = c(
       "Access to treatment (%)",
-      "Degree of resistance to drug A",
-      "Degree of resistance to drug B",
+      "Degree of resistance to the short-acting drug",
+      "Degree of resistance to the long-acting drug",
       "Half-life",
       "Fitness cost",
       "EIR",
@@ -87,8 +91,8 @@ PLOT<-
       "C_max_IC50"),
     labels = c(
       "Access to treatment (%)",
-      "Degree of resistance to drug A",
-      "Degree of resistance to drug B",
+      "Degree of resistance to the short-acting drug",
+      "Degree of resistance to the long-acting drug",
       "Half-life",
       "Fitness cost",
       "EIR",
@@ -96,9 +100,9 @@ PLOT<-
   ggtitle(label = "") +
   theme(
     strip.text.x = element_text(size = 18/constant, color = "black", face = "bold"),
-      strip.text.y = element_text(size = 18/constant, color = "black", face = "bold"))+
+    strip.text.y = element_text(size = 18/constant, color = "black", face = "bold"))+
+  theme(legend.position = "bottom", legend.direction = "vertical")+
   theme(legend.key.size = unit(1/constant, "cm")) 
 
-ggsave("/scicore/home/penny/masthi00/WF_spread/Visulaise_results/Paper/Figure 2–figure supplement 1.pdf",
-       plot = PLOT, width = 15, height = 6, device="pdf", units = "cm", dpi = 300)
-
+ggsave("/scicore/home/penny/masthi00/WF_spread/Visulaise_results/Paper/Figure 2-figure supplement 1.pdf",
+       plot = PLOT, width = 10, height = 9, device="pdf", units = "cm", dpi = 300)
