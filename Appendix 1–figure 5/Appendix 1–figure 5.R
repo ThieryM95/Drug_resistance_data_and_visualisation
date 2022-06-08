@@ -71,7 +71,7 @@ PLOT<-ggplot(data = Data, aes(x = time_spread-30, y = Measurment_R)) +
     axis.title.x = element_text(size = 16/constant, face = "bold"),
     axis.title.y = element_text(size = 16/constant, face = "bold"),
     plot.title = element_text(size = 18/constant, hjust = 0.5, face = "bold")) +
-  ylab("The logit of the relative frequency of\n the resistant genotype in inoculations") +
+  ylab("The logit of the frequency of\n the resistant genotype in inoculations") +
   ylim(0.5, 1) +
   xlab("Time since the end of the burn-in phase (years)") +
   theme(strip.text.x = element_text(size = 16/constant, color = "black", face = "bold"),

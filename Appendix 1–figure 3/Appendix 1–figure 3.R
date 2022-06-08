@@ -24,7 +24,7 @@ Output_data$logit_P<-log(Output_data$P/(1-Output_data$P))
 constant<-2
 PLOT<-ggplot(Output_data)+
   geom_line(aes(x=Survey/12.167-30, y=logit_P),size=2/constant)+
-  scale_y_continuous(name = "The logit of the relative frequency of\n the resistant genotype in inoculations") +
+  scale_y_continuous(name = "The logit of the frequency of\n the resistant genotype in inoculations") +
   scale_x_continuous(name = "Time since the end of the burn-in phase (years)", lim=c(0,10)) +
   theme_bw() + 
   theme(axis.text.x = element_text(size =  15/constant),

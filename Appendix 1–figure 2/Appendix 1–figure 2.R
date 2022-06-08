@@ -17,7 +17,7 @@ Data<-as.data.frame(Data)
 # Plot
 PLOT<-ggplot(Data)+
   geom_line(aes(x=time, y=sesonality2),size=2/constant)+
-  scale_y_continuous(name = "EIR \n(inoculations per person per year)", lim=c(0,100),expand = c(0, 0)) +
+  scale_y_continuous(name = "EIR \n(inoculations per person per month)", lim=c(0,100),expand = c(0, 0)) +
   scale_x_continuous(name = "Time", lim=c(1/12,13/12), breaks = c(1/12,2/12,3/12,4/12,5/12,6/12,7/12,8/12,9/12,10/12,11/12,12/12,13/12),labels=c("Jan.","","Mar.","","May","","Jul.","","Sept.","","Nov.","","Jan."),expand = c(0, 0)) +
   theme_bw() + 
   theme(axis.text.x = element_text(size =  15/constant),
